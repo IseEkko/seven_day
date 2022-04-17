@@ -17,6 +17,7 @@ func (n *node) String() string {
 }
 
 func (n *node) insert(pattern string, parts []string, height int) {
+
 	//查看是不是最后一个，是的话就返回
 	if len(parts) == height {
 		n.pattern = pattern
@@ -35,6 +36,7 @@ func (n *node) insert(pattern string, parts []string, height int) {
 	child.insert(pattern, parts, height+1)
 }
 
+//路由的查找
 func (n *node) search(parts []string, height int) *node {
 	if len(parts) == height || strings.HasPrefix(n.part, "*") {
 		if n.pattern == "" {
