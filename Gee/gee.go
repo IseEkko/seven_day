@@ -123,3 +123,10 @@ func (c *Context) Fail(code int, err string) {
 	c.index = len(c.handlers)
 	c.JSON(code, H{"message": err})
 }
+
+// Default use Logger() & Recovery middlewares
+func Default() *Engine {
+	engine := New()
+	engine.Use(Logger(), Recovery())
+	return engine
+}
